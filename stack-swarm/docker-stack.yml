@@ -12,7 +12,7 @@ services:
       replicas: 3
 
   node_server:
-    image: node-server:0.0.1
+    image: rafapg/semcomp-node-server:latest
     ports:
       - 8080:3000
     networks:

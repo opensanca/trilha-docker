@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mongo_database:
+    image: mongo:latest
+    networks:
+      minicurso:
+        aliases:
+          - c_mongo
+    volumes:
+      - ./node-rest-example/data:/data/db
+    deploy:
+      replicas: 3
+
+  node_server:
+    image: node-server:0.0.1
+    ports:
+      - 8080:3000
+    networks:
+      - minicurso
+    depends_on:
+      - mongo_database
+    deploy:
+      replicas: 3
+
+networks:
+  minicurso:
+    external: false

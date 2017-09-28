@@ -4,11 +4,11 @@ module.exports = function(app) {
 
 
   app.route('/').get(function(req, res){console.log('Index'); res.json('Webserver Running!');});
-  app.route('/semcomp2017')
+  app.route('/minicursos')
     .get(minicursos.list_all)
     .post(minicursos.create);
 
-  app.route('/semcomp2017/:taskId')
+  app.route('/minicursos/:minicursoId')
     .get(minicursos.read_one)
     .delete(minicursos.delete_one);
 };

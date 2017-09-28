@@ -1,5 +1,4 @@
 
-
 var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000
@@ -8,7 +7,7 @@ var express = require('express'),
  bodyParser = require('body-parser');
   
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://c_mongo/SemComp2017'); 
+mongoose.connect('mongodb://c_mongo/opensanca');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,4 +18,4 @@ routes(app);
 
 app.listen(port);
 
-console.log('todo list RESTful API server started on: ' + port);
+console.log('Opensanca Minicursos RESTful API server started on: ' + port);

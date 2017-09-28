@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
   Minicurso = mongoose.model('Minicurso');
 
 exports.list_all = function(req, res) {
-  Minicurso.find({}, function(err, task) {
+  Minicurso.find({}, function(err, minicurso) {
     if (err)
       res.send(err);
-    res.json(task);
+    res.json(minicurso);
   });
 };
 
@@ -23,7 +23,7 @@ exports.create = function(req, res) {
 
 
 exports.read_one = function(req, res) {
-  Minicurso.findById(req.params.taskId, function(err, minicurso) {
+  Minicurso.findById(req.params.minicursoId, function(err, minicurso) {
     if (err)
       res.send(err);
     res.json(minicurso);
@@ -32,10 +32,10 @@ exports.read_one = function(req, res) {
 
 exports.delete_one = function(req, res) {
   Minicurso.remove({
-    _id: req.params.taskId
+    _id: req.params.minicursoId
   }, function(err, minicurso) {
     if (err)
       res.send(err);
-    res.json({ message: 'Minicurso successfully deleted' });
+    res.json({ message: 'Minicurso deletado com sucesso' });
   });
 };

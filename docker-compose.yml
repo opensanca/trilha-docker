@@ -1,0 +1,19 @@
+version: '3'
+services:
+  c_mongo:
+    image: mongo:latest
+    volumes:
+      - ./mongodb:/data/db
+
+  node_server:
+    image: node:8.3
+    volumes:
+      - ./node-rest-example:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - 8080:3000
+    links: 
+      - c_mongo
+    depends_on:
+      - c_mongo
+    command: npm run start
